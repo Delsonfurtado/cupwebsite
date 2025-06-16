@@ -189,6 +189,35 @@ body {
   .buttons-container {
     display: none;
   }
+
+  .navbar, .nav-links, .buttons-container, .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+  }
+
+  .buttons-container {
+    margin-top: 10px;
+  }
+
+  .footer {
+    display: none !important;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  .desktop-ui {
+    display: none;
+  }
+
+  .mobile-ui {
+    display: block;
+  }
 }
 
 .home-section {
@@ -284,35 +313,4 @@ form button:hover {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-@media (max-width: 768px) {
-  .navbar, .nav-links, .buttons-container, .footer {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .nav-links {
-    margin-top: 10px;
-  }
-
-  .buttons-container {
-    margin-top: 10px;
-  }
-
-  .footer {
-    padding: 20px;
-  }
-
-  form {
-    width: 90%;
-  }
-
-  .desktop-ui {
-    display: none;
-  }
-
-  .mobile-ui {
-    display: block;
-  }
 }
