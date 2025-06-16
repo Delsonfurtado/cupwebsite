@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICYM Cup - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .nav-logo {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/assets/logo.png" alt="Logo" class="nav-logo">
+      <h1 class="logo">ICYM SHIRVA</h1>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="register.html">Application</a>
+      <a href="/myapps/templates/rules.html">Rules</a>
+      <a href="/myapps/templates/staff.html">Staff</a>
+    </div>
+    <div class="buttons-container">
+      <button class="play-btn" onclick="window.location.href='https://fivem.net/'">Play</button>
+      <button class="discord-btn" onclick="window.location.href='https://discord.gg/Rz4Ktu'">Discord</button>
+      <button class="sound-toggle" onclick="toggleSound()">🔊 ON</button>
+    </div>
+    <div class="hamburger">☰</div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="register.html">Application</a>
+    <a href="/myapps/templates/rules.html">Rules</a>
+    <a href="/myapps/templates/staff.html">Staff</a>
+    <button onclick="window.location.href='https://fivem.net/'">Play</button>
+    <button onclick="window.location.href='https://discord.gg/Rz4yCyHKtu'">Discord</button>
+    <button onclick="toggleSound()">🔊 ON</button>
+  </div>
+
+
+
+  <!-- Background Video -->
+  <div class="video-background">
+    <video id="bg-video" autoplay loop muted playsinline>
+      <source src="/assets/edit.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Home Section -->
+  <section class="home-section">
+    <h1>Welcome to ICYM Cup</h1>
+    <p>Join the tournament and showcase your talent!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <p>&copy; 2025 ICYM SHIRVA</p>
+      <div class="footer-social">
+        <a href="https://youtu.be/LTQMxjdQ7jc?si=hU5d6onbKGwV1Zvh">Instagram</a>
+        <a href="https://youtu.be/LTQMxjdQ7jc?si=hU5d6onbKGwV1Zvh">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p></p>
+      <div class="server-info">
+        <span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSound() {
+      var video = document.getElementById("bg-video");
+      var soundButtons = document.querySelectorAll(".sound-toggle");
+      video.muted = !video.muted;
+      soundButtons.forEach(button => {
+        button.textContent = video.muted ? "🔇 OFF" : "🔊 ON";
+      });
+    }
+
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

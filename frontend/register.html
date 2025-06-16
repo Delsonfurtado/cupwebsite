@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICYM Cup - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: url('/assets/WINNER.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .nav-logo {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    form {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      margin: 40px auto;
+      color: white;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-bottom: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      margin-top: 20px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      background-color: #00bcd4;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .form-section h1 {
+      text-align: center;
+      color: black;
+      margin-top: 40px;
+      padding: 0 10px;
+    }
+    @media (max-width: 600px) {
+      form {
+        padding: 15px;
+        font-size: 14px;
+        margin: 20px auto;
+      }
+      input, textarea {
+        font-size: 14px;
+        padding: 8px;
+      }
+      .form-section h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/assets/orginalapi.png" alt="Logo" class="nav-logo">
+      <h1 class="logo">SKULLCITY ROLEPLAY</h1>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="register.html">Application</a>
+      <a href="/myapps/templates/rules.html">Rules</a>
+      <a href="/myapps/templates/staff.html">Staff</a>
+    </div>
+  </nav>
+
+  <!-- Application Section -->
+<section class="form-section">
+  <h1>ICYM Cup Registration</h1>
+  <form id="myForm" method="POST" enctype="multipart/form-data" action="http://localhost:3000/submit">
+    <label>Name:<input type="text" name="name" required></label>
+    <label>Email:<input type="email" name="email" required></label>
+    <label>Phone Number:<input type="tel" name="phone" required></label>
+    <label>Age:<input type="number" name="age" required></label>
+    <label>Date of Birth:<input type="date" name="dob" required></label>
+    <label>Parish:<input type="text" name="parish" required></label>
+    <label>Denary:<input type="text" name="denary" required></label>
+    <label>Captain Name:<input type="text" name="captain" required></label>
+    <label>Message:<textarea name="message"></textarea></label>
+    <label>Aadhar Card:<input type="file" name="aadhar" accept="image/*" required></label>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+<script>
+  document.getElementById("myForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("http://localhost:3000/submit", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message);
+      form.reset(); // Clear the form after success
+    })
+    .catch(err => {
+      console.error("Error submitting form:", err);
+      alert("Error submitting form.");
+    });
+  });
+</script>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <p>&copy; 2025 SKULLCITY ROLEPLAY</p>
+      <div class="footer-social">
+        <a href="https://youtu.be/LTQMxjdQ7jc?si=hU5d6onbKGwV1Zvh">Instagram</a>
+        <a href="https://youtu.be/LTQMxjdQ7jc?si=hU5d6onbKGwV1Zvh">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p>Join Now</p>
+      <div class="server-info">
+        <span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSound() {
+      var video = document.getElementById("bg-video");
+      var soundButtons = document.querySelectorAll(".sound-toggle");
+      video.muted = !video.muted;
+      soundButtons.forEach(button => {
+        button.textContent = video.muted ? "🔇 OFF" : "🔊 ON";
+      });
+    }
+
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger?.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
